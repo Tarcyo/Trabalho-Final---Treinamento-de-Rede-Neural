@@ -13,6 +13,50 @@ No vídeo, alterno entre os slides e o VS Code. Mostro como uma imagem vira uma 
 
 ---
 
+## 💻 Como reproduzir no seu computador
+
+Usei **Python 3.12** e rodei o projeto em CPU. A base Digits já vem com o scikit-learn. Depois de baixar ou clonar o repositório, abra um terminal na pasta deste README.
+
+### 1. Preparar o ambiente
+
+**Windows · PowerShell**
+
+```powershell
+py -3.12 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
+
+**Linux ou macOS**
+
+```bash
+python3.12 -m venv .venv
+source .venv/bin/activate
+```
+
+Com o ambiente ativo, instale as dependências.
+
+```shell
+python -m pip install -r requirements.txt
+```
+
+### 2. Conferir a rede que apresentei no vídeo
+
+Incluí os pesos finais no repositório. Para reproduzir a avaliação, basta preparar a divisão dos dados e carregar os pesos com estes dois comandos.
+
+```shell
+python preparar_digits.py
+python avaliar_modelo_final.py
+```
+
+O primeiro comando cria `digits_preparados.npz`. O segundo lê `pesos_xavier_momentum_0_9.npz`, grava `avaliacao_final.csv` e mostra a seguinte saída no terminal.
+
+```text
+validacao: 261/270 (96.67%)
+teste: 266/270 (98.52%)
+```
+
+Para ver de perto as dez imagens do início, rode `python visualizar_digits.py` e abra `digits_primeiras_10.png`.
+
 ## 🔢 Das imagens às previsões
 
 Usei a base **Digits** do scikit-learn. São 1.797 imagens de algarismos escritos à mão, cada uma acompanhada de um rótulo de 0 a 9. Na figura abaixo, o número acima de cada imagem é o rótulo que veio com a base.
@@ -62,49 +106,7 @@ Cada linha mostra a mudança em relação à referência. Os links abrem os hist
 
 ---
 
-## 💻 Como reproduzir no seu computador
 
-Usei **Python 3.12** e rodei o projeto em CPU. A base Digits já vem com o scikit-learn. Depois de baixar ou clonar o repositório, abra um terminal na pasta deste README.
-
-### 1. Preparar o ambiente
-
-**Windows · PowerShell**
-
-```powershell
-py -3.12 -m venv .venv
-.\.venv\Scripts\Activate.ps1
-```
-
-**Linux ou macOS**
-
-```bash
-python3.12 -m venv .venv
-source .venv/bin/activate
-```
-
-Com o ambiente ativo, instale as dependências.
-
-```shell
-python -m pip install -r requirements.txt
-```
-
-### 2. Conferir a rede que apresentei no vídeo
-
-Incluí os pesos finais no repositório. Para reproduzir a avaliação, basta preparar a divisão dos dados e carregar os pesos com estes dois comandos.
-
-```shell
-python preparar_digits.py
-python avaliar_modelo_final.py
-```
-
-O primeiro comando cria `digits_preparados.npz`. O segundo lê `pesos_xavier_momentum_0_9.npz`, grava `avaliacao_final.csv` e mostra a seguinte saída no terminal.
-
-```text
-validacao: 261/270 (96.67%)
-teste: 266/270 (98.52%)
-```
-
-Para ver de perto as dez imagens do início, rode `python visualizar_digits.py` e abra `digits_primeiras_10.png`.
 
 ### 3. Treinar as oito configurações
 
